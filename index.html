@@ -1,52 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | [Challenge Name Here]</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | [Challenge Name Here]</title>
 
-  Our Pricing
-  Annually
-  Monthly
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!-- * Main Container -->
 
-  Basic
-  &dollar;19.99
-  &dollar;199.99
-  500 GB Storage
-  2 Users Allowed
-  Send up to 3 GB
-  Learn More
+    <main id="main">
+      <!-- * Cards -->
 
-  Professional
-  &dollar;24.99
-  &dollar;249.99
-  1 TB Storage
-  5 Users Allowed
-  Send up to 10 GB
-  Learn More
+      <div class="pricing__container">
+        <h1>Our Pricing</h1>
+        <div class="pricetoggler">
+          <p>Annually</p>
+          <label class="toggle-button">
+            <input type="checkbox" class="toggle-check" />
+            <span class="toggle-circle"></span>
+          </label>
+          <p>Monthly</p>
+        </div>
+      </div>
 
-  Master
-  &dollar;39.99
-  &dollar;399.99
-  2 TB Storage
-  10 Users Allowed
-  Send up to 20 GB
-  Learn More
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+      <div class="cards__container">
+        <!-- * CARDS -->
+
+        <div class="card card__container">
+          <!-- * Card Header -->
+
+          <div class="card__header">
+            <p class="storage-type">Basic</p>
+
+            <h1 class="storage-price-annually active">
+              <span class="dollar">&dollar;</span>199.99
+            </h1>
+
+            <h1 class="storage-price-monthly">
+              <span class="dollar">&dollar;</span>19.99
+            </h1>
+          </div>
+
+          <!-- * Card Body -->
+
+          <div class="card__body">
+            <ul class="storage-features">
+              <li class="storage-feature">500 GB Storage</li>
+              <li class="storage-feature">2 Users Allowed</li>
+              <li class="storage-feature">Send up to 3 GB</li>
+            </ul>
+          </div>
+
+          <!-- * Card Footer -->
+
+          <div class="card__footer">
+            <button class="know-more">Learn More</button>
+          </div>
+        </div>
+
+        <div class="card card__container">
+          <div class="card__header">
+            <p class="storage-type">Professional</p>
+
+            <h1 class="storage-price-annually active">
+              <span class="dollar">&dollar;</span>249.99
+            </h1>
+
+            <h1 class="storage-price-monthly">
+              <span class="dollar">&dollar;</span>24.99
+            </h1>
+          </div>
+
+          <!-- * Card Body -->
+
+          <div class="card__body">
+            <ul class="storage-features">
+              <li class="storage-feature">1TB Storage</li>
+              <li class="storage-feature">5 Users Allowed</li>
+              <li class="storage-feature">Send up to 10 GB</li>
+            </ul>
+          </div>
+
+          <!-- * Card Footer -->
+
+          <div class="card__footer">
+            <button class="know-more">Learn More</button>
+          </div>
+        </div>
+
+        <div class="card card__container">
+          <div class="card__header">
+            <p class="storage-type">Master</p>
+
+            <h1 class="storage-price-annually active">
+              <span class="dollar"><span class="dollar">&dollar;</span></span
+              >399.99
+            </h1>
+
+            <h1 class="storage-price-monthly">
+              <span class="dollar">&dollar;</span>39.99
+            </h1>
+          </div>
+
+          <!-- * Card Body -->
+
+          <div class="card__body">
+            <ul class="storage-features">
+              <li class="storage-feature">2 TB Storage</li>
+              <li class="storage-feature">10 Users Allowed</li>
+              <li class="storage-feature">Send up to 20 GB</li>
+            </ul>
+          </div>
+
+          <!-- * Card Footer -->
+
+          <div class="card__footer">
+            <button class="know-more">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script type="text/javascript">
+    let toggleBtn = document.querySelector(".toggle-check");
+    let monthlyPrices = document.querySelectorAll("h1.storage-price-monthly");
+    let annuallyPrices = document.querySelectorAll("h1.storage-price-annually");
+
+    console.log(monthlyPrices, annuallyPrices);
+
+    toggleBtn.addEventListener("change", function () {
+      if (toggleBtn.checked === true) {
+        monthlyPrices.forEach((price) => {
+          price.classList.add("active");
+        });
+
+        annuallyPrices.forEach((price) => {
+          price.classList.remove("active");
+        });
+        
+      }else {
+        annuallyPrices.forEach((price) => {
+          price.classList.add("active");
+        });
+        monthlyPrices.forEach((price) => {
+          price.classList.remove("active");
+        });
+      }
+    });
+  </script>
 </html>
